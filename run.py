@@ -10,6 +10,7 @@ class Board:
         self.size = size
         self.num_ships = num_ships
         self.grid = [["." for _ in range(size)] for _ in range(size)]
+        self.place_ships()
 
     def initialise_board(self):
         """
@@ -27,6 +28,18 @@ class Board:
         print("   " + " ".join(chr(97 + i) for i in range(self.size)))
         for r in range(self.size):
             print(str(r + 1) + "  " + " ".join(self.grid[r]))
+
+    def place_ships(self):
+        """
+        Places the ships in random places on the board.
+        """
+        ships_placed = 0
+        while ships_placed < self.num_ships:
+            row = random.randint(0, self.size - 1)
+            col = random.randint(0, self.size - 1)
+            if self.grid[row][col] == ".":
+                self.grid[row][col] = "S"
+                ships_placed += 1
 
 
 player_board = Board()
