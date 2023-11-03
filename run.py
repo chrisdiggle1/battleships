@@ -20,9 +20,11 @@ class Board:
 
     def print_board(self):
         """
-        Print the game board in a format the user can read.
+        Prints the board with column headers as letters using the chr()
+        function to convert numbers to ASCII characters. Numbers are used
+        down the side.
         """
-        print("   " + " ".join(str(i + 1) for i in range(self.size)))
+        print("   " + " ".join(chr(97 + i) for i in range(self.size)))
         for r in range(self.size):
             print(str(r + 1) + "  " + " ".join(self.grid[r]))
 
@@ -32,5 +34,5 @@ computer_board = Board()
 
 print("Your board:")
 player_board.print_board()
-print("\nComputer's board (with ships hidden):")
+print("\nComputer's board")
 computer_board.print_board()
