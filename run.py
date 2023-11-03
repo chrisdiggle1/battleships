@@ -4,7 +4,7 @@ import random
 class Board:
     def __init__(self, size=6, num_ships=5):
         """
-        Initializes the game board with a specific size and places ships 
+        Initializes the game board with a specific size and places ships
         at random locations.
         """
         self.size = size
@@ -19,7 +19,7 @@ class Board:
         """
         return [["." for _ in range(self.size)] for _ in range(self.size)]
 
-    def print_board(self):
+    def print_board(self, show_ships=False):
         """
         Prints the board with column headers as letters using the chr()
         function to convert numbers to ASCII characters. Numbers are used
@@ -27,7 +27,11 @@ class Board:
         """
         print("   " + " ".join(chr(97 + i) for i in range(self.size)))
         for r in range(self.size):
-            print(str(r + 1) + "  " + " ".join(self.grid[r]))
+            row_to_print = [
+                '.'
+                if cell == 'S' and not show_ships
+                else cell for cell in self.grid[r]]
+            print(str(r + 1) + "  " + " ".join(row_to_print))
 
     def place_ships(self):
         """
@@ -46,6 +50,6 @@ player_board = Board()
 computer_board = Board()
 
 print("Your board:")
-player_board.print_board()
+player_board.print_board(show_ships=True)
 print("\nComputer's board")
 computer_board.print_board()
