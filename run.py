@@ -72,6 +72,13 @@ class Board:
             except ValueError:
                 print("Enter a valid row number and column letter.")
 
+    def valid_guess(self, row, col):
+        """
+        Checks the guess is valid (i.e on the board and not already
+        guessed)
+        """
+        return self.grid[row][col in [".", "S"]]
+
 
 player_board= Board()
 computer_board= Board()
