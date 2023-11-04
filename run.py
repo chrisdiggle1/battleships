@@ -93,17 +93,36 @@ class Board:
             self.grid[row][col] = "X"
             return False
 
+    def computer_guess(self):
+        """
+        Random guess generated for the computers turn
+        """
+        while True:
+            col = random.randint(0, self.size - 1)
+            row = random.randint(0, self.size - 1)
+            if self.grid[row][col] in [".", "S"]:
+                return (row, col)
+
 
 player_board= Board()
 computer_board= Board()
 
-guess_row, guess_col = player_board.player_guess()
-if player_board.valid_guess(guess_row, guess_col):
-    player_board.mark_guess(guess_row, guess_col)
-else:
-    print("You've already guessed that spot.")
+while True:
+    print("Your board:")
+    player_board.print_board(show_ships=True)
+    print("\nComputer's board:")
+    computer_board.print_board()
 
-print("Your board:")
-player_board.print_board(show_ships=True)
-print("\nComputer's board")
-computer_board.print_board()
+    # Players turn
+    guess_col, guess_row = player_board.player_guess()
+    if player_board.valid_guess(guess_col, guess_row):
+        player_board.mark_guess(guess_col, guess_row)
+    else:
+        print("You've already guessed that spot.")
+
+    # Computers turn
+    comp_col, comp_row = computer_board.computer_guess()
+    if computer_board.mark_guess(comp_col, comp_row):
+        print(f"You were hit at {comp_col+1}{chr(97+comp_row)}!")
+    else:
+        print("Computer missed.")
