@@ -79,11 +79,29 @@ class Board:
         """
         return self.grid[row][col in [".", "S"]]
 
+    def mark_guess(self, row, col):
+        """
+        Mark the board with a hit or miss depending on the players guess.
+        '*' marks a hit and 'X' marks a miss"
+        """
+        if self.grid[row][col] == "S":
+            print("Hit!")
+            self.grid[row][col] = "*"
+            return True
+        else:
+            print("Miss!")
+            self.grid[row][col] = "X"
+            return False
+
 
 player_board= Board()
 computer_board= Board()
 
 guess_row, guess_col = player_board.player_guess()
+if player_board.valid_guess(guess_row, guess_col):
+    player_board.mark_guess(guess_row, guess_col)
+else:
+    print("You've already guessed that spot.")
 
 print("Your board:")
 player_board.print_board(show_ships=True)
