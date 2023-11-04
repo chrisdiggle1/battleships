@@ -55,8 +55,8 @@ class Board:
         """
         while True:
             try:
-                row_input = input("Guess a row: ")
-                col_input = input("Guess a column (letter): ").lower()
+                col_input = input("Guess a column 'a-f': ").lower()
+                row_input = input("Guess a row '1-6': ")
                 row = int(row_input) - 1
                 col = ord(col_input) - ord('a')
 
