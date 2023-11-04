@@ -114,15 +114,20 @@ while True:
     computer_board.print_board()
 
     # Players turn
-    guess_col, guess_row = player_board.player_guess()
-    if player_board.valid_guess(guess_col, guess_row):
-        player_board.mark_guess(guess_col, guess_row)
-    else:
-        print("You've already guessed that spot.")
+    while True:
+        guess_col, guess_row = player_board.player_guess()
+        if player_board.valid_guess(guess_col, guess_row):
+            player_board.mark_guess(guess_col, guess_row)
+            break
+        else:
+            print("You've already guessed that spot.")
 
     # Computers turn
-    comp_col, comp_row = computer_board.computer_guess()
-    if computer_board.mark_guess(comp_col, comp_row):
-        print(f"You were hit at {comp_col+1}{chr(97+comp_row)}!")
-    else:
-        print("Computer missed.")
+    while True:
+        comp_col, comp_row = computer_board.computer_guess()
+        if computer_board.valid_guess(comp_col, comp_row):
+            if computer_board.mark_guess(comp_row, comp_col):
+                print(f"You were hit at {comp_col+1}{chr(97+comp_row)}!")
+        else:
+            print("Computer missed.")
+        break
