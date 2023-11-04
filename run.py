@@ -60,7 +60,6 @@ class Board:
                 row_input = input("Guess a row '1-6': ")
                 row = int(row_input) - 1
                 col = ord(col_input) - ord('a')
-              
                 if 0 <= row < self.size:
                     if 0 <= col < self.size:
                         return (row, col)
@@ -86,13 +85,11 @@ class Board:
         '*' marks a hit and 'X' marks a miss"
         """
         if self.grid[row][col] == "S":
-            print("Hit!")
             self.grid[row][col] = "*"
-            return True
+            return "hit"
         else:
-            print("Miss!")
             self.grid[row][col] = "X"
-            return False
+            return "miss"
 
     def computer_guess(self):
         """
@@ -115,22 +112,22 @@ while True:
     computer_board.print_board()
 
     # Players turn
-    guess_row, guess_col = player_board.player_guess()
-    if computer_board.valid_guess(guess_row, guess_col):
-        computer_board.mark_guess(guess_row, guess_col)
-    else:
-        print("You've already guessed that spot.")
-
+    while True:
+        guess_row, guess_col = player_board.player_guess()
+        if computer_board.valid_guess(guess_row, guess_col):
+            result = computer_board.mark_guess(guess_row, guess_col)
+            print(f"You {'Hit' if result == 'hit' else 'Missed'} at "
+                  f"{chr(97 + guess_col)}{guess_row + 1}!!.")
+            break
+        else:
+            print("You've already guessed that spot.")
     print("\n--------------- Player's turn has ended ---------------\n")
 
     # Computers turn
     print("Computer is thinking...")
     time.sleep(2)
     comp_row, comp_col = player_board.computer_guess()
-    if player_board.valid_guess(comp_row, comp_col):
-        if player_board.mark_guess(comp_row, comp_col):
-            print(f"Computer hit at {chr(97+comp_col)}{comp_row+1}!")
-        else:
-            print("Computer missed.")
-    else:
-        print("Computer guessed an already guessed spot.")
+    result = player_board.mark_guess(comp_row, comp_col)
+    print(f"Computer {'Hit' if result == 'hit' else 'Missed'} at "
+          f"{chr(97 + comp_col)}{comp_row + 1}!!.")
+    print("\n--------------- Computers turn has ended ---------------\n")
