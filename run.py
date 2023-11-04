@@ -41,8 +41,8 @@ class Board:
         while ships_placed < self.num_ships:
             row = random.randint(0, self.size - 1)
             col = random.randint(0, self.size - 1)
-            if self.grid[row][col] == ".":
-                self.grid[row][col] = "S"
+            if self.grid[col][row] == ".":
+                self.grid[col][row] = "S"
                 ships_placed += 1
 
     def player_guess(self):
@@ -57,12 +57,12 @@ class Board:
             try:
                 col_input = input("Guess a column 'a-f': ").lower()
                 row_input = input("Guess a row '1-6': ")
-                row = int(row_input) - 1
                 col = ord(col_input) - ord('a')
+                row = int(row_input) - 1
 
-                if 0 <= row < self.size:
-                    if 0 <= col < self.size:
-                        return (row, col)
+                if 0 <= col < self.size:
+                    if 0 <= row < self.size:
+                        return (col, row)
                     else:
                         print(f"Please enter a letter between a and "
                               f"{chr(96 + self.size)}")
@@ -72,25 +72,25 @@ class Board:
             except ValueError:
                 print("Enter a valid row number and column letter.")
 
-    def valid_guess(self, row, col):
+    def valid_guess(self, col, row):
         """
         Checks the guess is valid (i.e on the board and not already
         guessed)
         """
-        return self.grid[row][col in [".", "S"]]
+        return self.grid[col][row] in [".", "S"]
 
-    def mark_guess(self, row, col):
+    def mark_guess(self, col, row):
         """
         Mark the board with a hit or miss depending on the players guess.
         '*' marks a hit and 'X' marks a miss"
         """
-        if self.grid[row][col] == "S":
+        if self.grid[col][row] == "S":
             print("Hit!")
-            self.grid[row][col] = "*"
+            self.grid[col][row] = "*"
             return True
         else:
             print("Miss!")
-            self.grid[row][col] = "X"
+            self.grid[col][row] = "X"
             return False
 
     def computer_guess(self):
@@ -100,12 +100,12 @@ class Board:
         while True:
             col = random.randint(0, self.size - 1)
             row = random.randint(0, self.size - 1)
-            if self.grid[row][col] in [".", "S"]:
-                return (row, col)
+            if self.grid[col][row] in [".", "S"]:
+                return (col, row)
 
 
-player_board= Board()
-computer_board= Board()
+player_board = Board()
+computer_board = Board()
 
 while True:
     print("Your board:")
