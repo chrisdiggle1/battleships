@@ -60,8 +60,8 @@ class Board:
                 col = ord(col_input) - ord('a')
                 break
             else:
-                print(f"Please enter a letter between 'a' and "
-                      f" '{chr(96 + self.size)}'.")
+                print(f"Invalid Letter - Please enter a letter between "
+                      f"'a' and '{chr(96 + self.size)}'.")
 
         while True:
             try:
@@ -70,8 +70,8 @@ class Board:
                 if 0 <= row < self.size:
                     break
                 else:
-                    print(f"Please enter a number between 1 and "
-                          f"{self.size}.")
+                    print(f"Invalid Number - Please enter a number between "
+                          f" '1' and '{self.size}'.")
             except ValueError:
                 print("Enter a valid row number.")
 
@@ -108,51 +108,70 @@ class Board:
 
     def check_game_over(self):
         """
-        Checks if all the ships have been hit.
+        Checks if all the ships have been hit and the game is finished.
         """
         return all(cell != 'S' for row in self.grid for cell in row)
 
 
-player_board = Board()
-computer_board = Board()
+def run_game():
+    """
+    Controls the main flow of the game between the player and computer
+    and handles the play again function once the current game has finished.
+    """
+    player_board = Board()
+    computer_board = Board()
 
-while True:
-    print("Your board:")
-    player_board.print_board(show_ships=True)
-    print("\nComputer's board:")
-    computer_board.print_board()
-
-    # Players turn
     while True:
-        guess_row, guess_col = player_board.player_guess()
-        if computer_board.valid_guess(guess_row, guess_col):
-            result = computer_board.mark_guess(guess_row, guess_col)
-            print(f"You {'Hit' if result == 'hit' else 'Missed'} at "
-                  f"{chr(97 + guess_col)}{guess_row + 1}!!.")
-            break
-        else:
-            print("You've already guessed that spot.")
-
-    if computer_board.check_game_over():
+        print("Your board:")
+        player_board.print_board(show_ships=True)
         print("\nComputer's board:")
         computer_board.print_board()
-        print("You Win! All computer's ships have been destroyed!")
-        break
 
-    print("\n--------------- Player's turn has ended ---------------\n")
+        # Players turn
+        while True:
+            guess_row, guess_col = player_board.player_guess()
+            if computer_board.valid_guess(guess_row, guess_col):
+                result = computer_board.mark_guess(guess_row, guess_col)
+                print(f"You {'Hit' if result == 'hit' else 'Missed'} at "
+                      f"{chr(97 + guess_col)}{guess_row + 1}!!.")
+                break
+            else:
+                print("You've already guessed that spot.")
 
-    # Computers turn
-    print("Computer is thinking...")
-    time.sleep(2)
-    comp_row, comp_col = player_board.computer_guess()
-    result = player_board.mark_guess(comp_row, comp_col)
-    print(f"Computer {'Hit' if result == 'hit' else 'Missed'} at "
-          f"{chr(97 + comp_col)}{comp_row + 1}!!.")
+        if computer_board.check_game_over():
+            print("\nComputer's board:")
+            computer_board.print_board()
+            return "Player"
 
-    if player_board.check_game_over():
-        print("\nYour board:")
-        player_board.print_board(show_ships=True)
-        print("You Lose! All your ships have been destroyed!")
-        break
+        print("\n------------- Player's turn has ended -------------\n")
+
+        # Computers turn
+        print("Computer is thinking...")
+        time.sleep(2)
+        comp_row, comp_col = player_board.computer_guess()
+        result = player_board.mark_guess(comp_row, comp_col)
+        print(f"Computer {'Hit' if result == 'hit' else 'Missed'} at "
+              f"{chr(97 + comp_col)}{comp_row + 1}!!.")
+
+        if player_board.check_game_over():
+            print("\nYour board:")
+            player_board.print_board(show_ships=True)
+            return "Computer"
 
     print("\n--------------- Computers turn has ended ---------------\n")
+
+
+# Loop to handle to playing the game again or not.
+while True:
+    winner = run_game()
+    if winner == "Player":
+        print("Congratulations! You have won the game!")
+    else:
+        print("Sorry, you have lost the game. The computer has won.")
+    play_again = input("Do you want to play again? (yes/no): ").strip().lower()
+    if play_again != "yes":
+        break
+
+    print("\nStarting a new game...\n")
+
+print("Thank you for playing Battleships!")
