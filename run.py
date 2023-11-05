@@ -55,7 +55,7 @@ class Board:
         ASCII code of the characters and covert to integers.
         """
         while True:
-            col_input = input("Guess a column 'a-f': ").lower()
+            col_input = input("Guess a column 'a-f':\n").lower()
             if 'a' <= col_input <= chr(96 + self.size):
                 col = ord(col_input) - ord('a')
                 break
@@ -65,7 +65,7 @@ class Board:
 
         while True:
             try:
-                row_input = input("Guess a row '1-6': ")
+                row_input = input("Guess a row '1-6':\n")
                 row = int(row_input) - 1
                 if 0 <= row < self.size:
                     break
@@ -142,7 +142,7 @@ def display_tutorial():
 *                 Good Luck and Enjoy the Game!!                      *
 *=====================================================================*
         """)
-    input("Press Enter to start the game...")
+    input("Press Enter to start the game...\n")
     run_game()
 
 
@@ -216,7 +216,7 @@ def game_intro():
 *====================================================*
         """)
         choice = input(
-            "Press (T) for the Tutorial or (P) to Play The Game "
+            "Press (T) for the Tutorial or (P) to Play The Game:\n"
         ).strip().upper()
 
         if choice == 'T':
@@ -230,7 +230,7 @@ def game_intro():
                 print("Sorry, you have lost the game. The computer has won.")
 
             play_again = input(
-                "Do you want to play again? (yes/no): "
+                "Do you want to play again? (yes/no):\n"
             ).strip().lower()
             if play_again != "yes":
                 print("Thank you for playing Battleships!")
