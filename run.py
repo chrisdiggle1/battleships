@@ -106,6 +106,12 @@ class Board:
             if self.grid[row][col] in [".", "S"]:
                 return (row, col)
 
+    def check_game_over(self):
+        """
+        Checks if all the ships have been hit.
+        """
+        return all(cell != 'S' for row in self.grid for cell in row)
+
 
 player_board = Board()
 computer_board = Board()
@@ -126,6 +132,13 @@ while True:
             break
         else:
             print("You've already guessed that spot.")
+
+    if computer_board.check_game_over():
+        print("\nComputer's board:")
+        computer_board.print_board()
+        print("You Win! All computer's ships have been destroyed!")
+        break
+
     print("\n--------------- Player's turn has ended ---------------\n")
 
     # Computers turn
@@ -135,4 +148,11 @@ while True:
     result = player_board.mark_guess(comp_row, comp_col)
     print(f"Computer {'Hit' if result == 'hit' else 'Missed'} at "
           f"{chr(97 + comp_col)}{comp_row + 1}!!.")
+
+    if player_board.check_game_over():
+        print("\nYour board:")
+        player_board.print_board(show_ships=True)
+        print("You Lose! All your ships have been destroyed!")
+        break
+
     print("\n--------------- Computers turn has ended ---------------\n")
