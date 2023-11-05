@@ -113,6 +113,39 @@ class Board:
         return all(cell != 'S' for row in self.grid for cell in row)
 
 
+def display_tutorial():
+    """
+    Displays the game tutorial with instructions on how to play.
+    """
+    print(r"""
+* ====================================================================*
+*                                                                     *
+*                           Battleships                               *
+*=====================================================================*
+* Welcome to Battleships, the classic naval combat game where strategy*
+* meets suspense! Prepare to engage in a thrilling war of wits, as    *
+* you pit your fleet against the unseen enemy. The objective is       *
+* simple, yet achieving it will require cunning, coordination, and a  *
+* little bit of luck. Get ready to embark on a high-seas adventure    *
+* where only the most astute commanders will prevail. Set your sights *
+* on victory, captain, for the battle is about to begin!              *
+*=====================================================================*
+*
+* The game coordinates range from letters 'a' to 'f' along the top    *
+* and '1' to '6' down the side. You will be prompted to pick a letter *
+* first and then a letter after that. If you hit the computers ship,  *
+* you will see a message stating where you hit and the computers      *
+* will be marked with a '*'. Misses will be marked with 'X' and the   *
+* players ships will be marked on their board with an 'S' which will  *
+* turn to '*' if hit. all the '.' represents the water. The game will *
+* end when one player has sunk all 5 of the other players ships.      *
+*                 Good Luck and Enjoy the Game!!                      *
+*=====================================================================*
+        """)
+    input("Press Enter to start the game...")
+    run_game()
+
+
 def run_game():
     """
     Controls the main flow of the game between the player and computer
@@ -161,17 +194,51 @@ def run_game():
     print("\n--------------- Computers turn has ended ---------------\n")
 
 
-# Loop to handle to playing the game again or not.
-while True:
-    winner = run_game()
-    if winner == "Player":
-        print("Congratulations! You have won the game!")
-    else:
-        print("Sorry, you have lost the game. The computer has won.")
-    play_again = input("Do you want to play again? (yes/no): ").strip().lower()
-    if play_again != "yes":
-        break
+def game_intro():
+    while True:
+        """
+        Displays the introduction to the game using ASCII art and gives the
+        userthe option of viewing a tutorial or playing the game.
+        """
+        print(r"""
+ ____        _   _   __             _
+(  _ \      ( )_( )_(_ )           ( )    _
+| (_) )  _ _|  _)  _)| |   __   ___| |__ (_)_ _    ___
+|  _ ( / _  ) | | |  | | / __ \  __)  _  \ |  _ \/  __)
+| (_) ) (_| | |_| |_ | |(  ___/__  \ | | | | (_) )__  \
+(____/ \__ _)\__)\__)___)\____)____/_) (_)_)  __/(____/
+                                           | |
+                                           (_)
+        """)
+        print(r"""
+ ====================================================
+*               WELCOME TO BATTLESHIPS!!             *
+*====================================================*
+        """)
+        choice = input(
+            "Press (T) for the Tutorial or (P) to Play The Game "
+        ).strip().upper()
 
-    print("\nStarting a new game...\n")
+        if choice == 'T':
+            display_tutorial()
+        elif choice == 'P':
+            run_game()
+            winner = run_game()
+            if winner == "Player":
+                print("Congratulations! You have won the game!")
+            elif winner == "Computer":
+                print("Sorry, you have lost the game. The computer has won.")
 
-print("Thank you for playing Battleships!")
+            play_again = input(
+                "Do you want to play again? (yes/no): "
+            ).strip().lower()
+            if play_again != "yes":
+                print("Thank you for playing Battleships!")
+                break
+        else:
+            print("Invalid input. Please press 'T' for tutorial or 'P' to "
+                  " play.")
+
+
+if __name__ == "__main__":
+    game_intro()
