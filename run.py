@@ -13,10 +13,10 @@ class Board:
         self.grid = [["." for _ in range(size)] for _ in range(size)]
         self.place_ships()
 
-    def initialise_board(self):
+    def reinitialise_board(self):
         """
-        Initialize the game board with water represented by dots and creates
-        a 6x6 game grid.
+        resets the game board to its initial state, clearing any previous
+        game state.
         """
         return [["." for _ in range(self.size)] for _ in range(self.size)]
 
@@ -55,22 +55,27 @@ class Board:
         ASCII code of the characters and covert to integers.
         """
         while True:
+            col_input = input("Guess a column 'a-f': ").lower()
+            if 'a' <= col_input <= chr(96 + self.size):
+                col = ord(col_input) - ord('a')
+                break
+            else:
+                print(f"Please enter a letter between 'a' and "
+                      f" '{chr(96 + self.size)}'.")
+
+        while True:
             try:
-                col_input = input("Guess a column 'a-f': ").lower()
                 row_input = input("Guess a row '1-6': ")
                 row = int(row_input) - 1
-                col = ord(col_input) - ord('a')
                 if 0 <= row < self.size:
-                    if 0 <= col < self.size:
-                        return (row, col)
-                    else:
-                        print(f"Please enter a letter between a and "
-                              f"{chr(96 + self.size)}")
+                    break
                 else:
                     print(f"Please enter a number between 1 and "
                           f"{self.size}.")
             except ValueError:
-                print("Enter a valid row number and column letter.")
+                print("Enter a valid row number.")
+
+        return row, col
 
     def valid_guess(self, row, col):
         """
