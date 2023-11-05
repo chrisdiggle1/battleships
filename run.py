@@ -56,24 +56,24 @@ class Board:
         """
         while True:
             col_input = input("Guess a column 'a-f':\n").lower()
-            if 'a' <= col_input <= chr(96 + self.size):
+            if len(col_input) == 1 and 'a' <= col_input <= chr(96 + self.size):
                 col = ord(col_input) - ord('a')
                 break
             else:
-                print(f"Invalid Letter - Please enter a letter between "
-                      f"'a' and '{chr(96 + self.size)}'.")
+                print(f"Invalid Letter - Please enter a single letter "
+                      f"between 'a' and '{chr(96 + self.size)}'.")
 
         while True:
-            try:
-                row_input = input("Guess a row '1-6':\n")
+            row_input = input("Guess a row '1-6':\n").strip()
+            if row_input.isdigit() and len(row_input) == 1:
                 row = int(row_input) - 1
                 if 0 <= row < self.size:
                     break
                 else:
                     print(f"Invalid Number - Please enter a number between "
                           f" '1' and '{self.size}'.")
-            except ValueError:
-                print("Enter a valid row number.")
+            else:
+                print("Invalid input - Please enter a single digit.")
 
         return row, col
 
