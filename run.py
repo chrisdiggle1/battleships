@@ -60,7 +60,7 @@ class Board:
                 col = ord(col_input) - ord('a')
                 break
             else:
-                print(f"Invalid Letter - Please enter a single letter "
+                print(f"Invalid Input - Please enter a single letter "
                       f"between 'a' and '{chr(96 + self.size)}'.")
 
         while True:
@@ -70,10 +70,10 @@ class Board:
                 if 0 <= row < self.size:
                     break
                 else:
-                    print(f"Invalid Number - Please enter a number between "
+                    print(f"Invalid Input - Please enter a number between "
                           f" '1' and '{self.size}'.")
             else:
-                print("Invalid input - Please enter a single digit.")
+                print("Invalid Input - Please enter a single digit.")
 
         return row, col
 
