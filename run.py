@@ -165,6 +165,19 @@ def get_name():
                   f"or type 'exit' to quit.")
 
 
+def play_or_quit():
+    """
+    Gives the user to option to quit the game or carry on after each turn.
+    If the player enters 'quit' they will be taken back to the intro screen.
+    """
+    quit_game = input("\nPress Enter to continue or type 'quit' to return to "
+                      f"the intro screen: ").lower().strip()
+    if quit_game == 'quit':
+        game_intro()
+    else:
+        return 'continue'
+
+
 def run_game():
     """
     Controls the main flow of the game between the player and computer
@@ -214,6 +227,10 @@ def run_game():
             return "Computer"
 
         print("\n--------------- Computers turn has ended ---------------\n")
+
+        action = play_or_quit()
+        if action == 'quit':
+            return
 
 
 def game_intro():
