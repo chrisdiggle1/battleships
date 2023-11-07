@@ -112,6 +112,41 @@ class Board:
         return all(cell != 'S' for row in self.grid for cell in row)
 
 
+class GameStats:
+    def __init__(self):
+        self.games_played = 0
+        self.wins = 0
+        self.losses = 0
+        self.shots_taken = 0
+        self.hits = 0
+        self.misses = 0
+
+    def shot_stats(self, result):
+        self.shots_taken += 1
+        if result == 'hit':
+            self.hits += 1
+        else:
+            self.misses += 1
+
+    def game_end_stats(self, player_won):
+        self.games_played += 1
+        if player_won:
+            self.wins += 1
+        else:
+            self.losses += 1
+
+    def display_stats(self):
+        hit_miss_ratio = self.hits / max(self.shots_taken, 1)
+        print(f"\nGame Statistics:")
+        print(f"Games Played: {self.games_played}")
+        print(f"Wins: {self.wins}")
+        print(f"Losses: {self.losses}")
+        print(f"Total Shots Taken: {self.shots_taken}")
+        print(f"Hits: {self.hits}")
+        print(f"Misses: {self.misses}")
+        print(f"Hit/Miss Ratio: {hit_miss_ratio:.2f}")
+
+
 def display_tutorial():
     """
     Displays the game tutorial with instructions on how to play.
@@ -188,6 +223,7 @@ def run_game():
 
     player_board = Board()
     computer_board = Board()
+    game_stats = GameStats()
 
     while True:
         print("\n" + player_board_name + ":\n")
@@ -200,6 +236,7 @@ def run_game():
             guess_row, guess_col = player_board.player_guess()
             if computer_board.valid_guess(guess_row, guess_col):
                 result = computer_board.mark_guess(guess_row, guess_col)
+                game_stats.shot_stats(result)
                 print(f"You {'Hit' if result == 'hit' else 'Missed'} at "
                       f"{chr(97 + guess_col)}{guess_row + 1}!!.")
                 break
@@ -209,6 +246,8 @@ def run_game():
         if computer_board.check_game_over():
             print("\nComputer's board:")
             computer_board.print_board()
+            game_stats.game_end_stats(player_won=True)
+            game_stats.display_stats()
             return "Player"
 
         print("\n------------- Player's turn has ended -------------\n")
@@ -224,6 +263,7 @@ def run_game():
         if player_board.check_game_over():
             print("\nYour board:")
             player_board.print_board(show_ships=True)
+            game_stats.display_stats()
             return "Computer"
 
         print("\n--------------- Computers turn has ended ---------------\n")
