@@ -191,7 +191,7 @@ def run_game():
             player_board.print_board(show_ships=True)
             return "Computer"
 
-    print("\n--------------- Computers turn has ended ---------------\n")
+        print("\n--------------- Computers turn has ended ---------------\n")
 
 
 def game_intro():
