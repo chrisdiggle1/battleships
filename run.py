@@ -222,7 +222,6 @@ def game_intro():
         if choice == 'T':
             display_tutorial()
         elif choice == 'P':
-            run_game()
             winner = run_game()
             if winner == "Player":
                 print("Congratulations! You have won the game!")
