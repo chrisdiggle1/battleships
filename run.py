@@ -145,16 +145,39 @@ def display_tutorial():
     run_game()
 
 
+def get_name():
+    """
+    Prompts the user to enter a name to play game and names their
+    board with their name. The game will terminate if the user
+    enters 'exit'.
+    """
+    while True:
+        name = input(
+            "Please enter your name to start the game "
+            f"or type 'exit' to quit: ").strip()
+        if name == 'exit':
+            print("Exiting the game. Goodbye!")
+            exit()
+        elif name:
+            return name
+        else:
+            print("No name entered. Please enter a name to continue "
+                  f"or type 'exit' to quit.")
+
+
 def run_game():
     """
     Controls the main flow of the game between the player and computer
     taking turns and returns the winner of the game.
     """
+    name = get_name()
+    player_board_name = f"{name}'s board"
+
     player_board = Board()
     computer_board = Board()
 
     while True:
-        print("Your board:")
+        print(f"{player_board_name}:")
         player_board.print_board(show_ships=True)
         print("\nComputer's board:")
         computer_board.print_board()
