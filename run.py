@@ -15,8 +15,7 @@ class Board:
 
     def reinitialise_board(self):
         """
-        resets the game board to its initial state, clearing any previous
-        game state.
+        Creates and returns a new state of the game board.
         """
         return [["." for _ in range(self.size)] for _ in range(self.size)]
 
@@ -149,7 +148,7 @@ def display_tutorial():
 def run_game():
     """
     Controls the main flow of the game between the player and computer
-    and handles the play again function once the current game has finished.
+    taking turns and returns the winner of the game.
     """
     player_board = Board()
     computer_board = Board()
@@ -198,7 +197,8 @@ def game_intro():
     while True:
         """
         Displays the introduction to the game using ASCII art and gives the
-        userthe option of viewing a tutorial or playing the game.
+        user the option of viewing a tutorial or playing the game and handles
+        the replay game loop.
         """
         print(r"""
  ____        _   _   __             _
