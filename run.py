@@ -25,7 +25,7 @@ class Board:
         function to convert numbers to ASCII characters. Numbers are used
         down the side.
         """
-        print("   " + " ".join(chr(97 + i) for i in range(self.size)))
+        print("\n   " + " ".join(chr(97 + i) for i in range(self.size)))
         for r in range(self.size):
             row_to_print = [
                 '.'
@@ -54,7 +54,7 @@ class Board:
         ASCII code of the characters and covert to integers.
         """
         while True:
-            col_input = input("Guess a column 'a-f':\n").lower()
+            col_input = input("\nGuess a column 'a-f':\n").lower()
             if len(col_input) == 1 and 'a' <= col_input <= chr(96 + self.size):
                 col = ord(col_input) - ord('a')
                 break
@@ -153,15 +153,15 @@ def get_name():
     """
     while True:
         name = input(
-            "Please enter your name to start the game "
+            "\nPlease enter your name to start the game "
             f"or type 'exit' to quit: ").strip()
         if name == 'exit':
-            print("Exiting the game. Goodbye!")
+            print("\nExiting the game. Goodbye!")
             exit()
         elif name:
             return name
         else:
-            print("No name entered. Please enter a name to continue "
+            print("\nNo name entered. Please enter a name to continue "
                   f"or type 'exit' to quit.")
 
 
@@ -177,9 +177,9 @@ def run_game():
     computer_board = Board()
 
     while True:
-        print(f"{player_board_name}:")
+        print("\n" + player_board_name + ":\n")
         player_board.print_board(show_ships=True)
-        print("\nComputer's board:")
+        print("\nComputer's board:\n")
         computer_board.print_board()
 
         # Players turn
