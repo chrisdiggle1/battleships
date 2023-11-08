@@ -239,11 +239,11 @@ def run_game():
     """
     name = get_name()
     player_board_name = f"{name}'s board"
+    game_stats = GameStats()
 
     while True:
         player_board = Board()
         computer_board = Board()
-        game_stats = GameStats()
 
         while not player_board.check_game_over() \
                 and not computer_board.check_game_over():
@@ -267,9 +267,8 @@ def run_game():
             if computer_board.check_game_over():
                 print("\nComputer's board:")
                 computer_board.print_board(show_ships=True)
-                game_stats.game_end_stats(player_won=True)
-                game_stats.display_stats()
                 print("Congratulations! You have won the game!")
+                game_stats.game_end_stats(player_won=True)
                 break
 
             print("\n------------- Player's turn has ended -------------\n")
@@ -286,15 +285,16 @@ def run_game():
             if player_board.check_game_over():
                 print("\nYour board:")
                 player_board.print_board(show_ships=True)
-                game_stats.game_end_stats(player_won=False)
-                game_stats.display_stats()
                 print("Sorry, you have lost the game. The computer has won.")
+                game_stats.game_end_stats(player_won=False)
                 break
 
             print("\n------------- Computers turn has ended -------------\n")
 
             if play_or_quit() == 'quit':
                 return
+
+        game_stats.display_stats()
 
         play_again = input(
             "Do you want to play again? (yes/no):\n"
