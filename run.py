@@ -11,7 +11,6 @@ class Board:
         self.size = size
         self.num_ships = num_ships
         self.grid = [["." for _ in range(size)] for _ in range(size)]
-        self.place_ships()
         self.computer_guesses = set()
 
     def reinitialise_board(self):
@@ -33,6 +32,24 @@ class Board:
                 if cell == 'S' and not show_ships
                 else cell for cell in self.grid[r]]
             print(str(r + 1) + "  " + " ".join(row_to_print))
+
+    def set_ships(self):
+        """
+        Sets the number of ships based on user input, with a minimum of 2
+        and a maximum of 10.
+        """
+        while True:
+            try:
+                num_ships = int(input("Enter the number of ships to place on "
+                                f"the board (2-10): "))
+                if 2 <= num_ships <= 10:
+                    self.num_ships = num_ships
+                    self.place_ships()
+                    break
+                else:
+                    print("Please enter a number between 2 and 10.")
+            except ValueError:
+                print("Invalid input. Please enter a whole number.")
 
     def place_ships(self):
         """
@@ -243,7 +260,11 @@ def run_game():
 
     while True:
         player_board = Board()
+        player_board.set_ships()
+
         computer_board = Board()
+        computer_board.num_ships = player_board.num_ships
+        computer_board.place_ships()
 
         while not player_board.check_game_over() \
                 and not computer_board.check_game_over():
