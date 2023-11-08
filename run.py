@@ -221,66 +221,77 @@ def run_game():
     name = get_name()
     player_board_name = f"{name}'s board"
 
-    player_board = Board()
-    computer_board = Board()
-    game_stats = GameStats()
-
     while True:
-        print("\n" + player_board_name + ":\n")
-        player_board.print_board(show_ships=True)
-        print("\nComputer's board:\n")
-        computer_board.print_board()
+        player_board = Board()
+        computer_board = Board()
+        game_stats = GameStats()
 
-        # Players turn
-        while True:
-            guess_row, guess_col = player_board.player_guess()
-            if computer_board.valid_guess(guess_row, guess_col):
-                result = computer_board.mark_guess(guess_row, guess_col)
-                game_stats.shot_stats(result)
-                print(f"You {'Hit' if result == 'hit' else 'Missed'} at "
-                      f"{chr(97 + guess_col)}{guess_row + 1}!!.")
-                break
-            else:
-                print("You've already guessed that spot.")
-
-        if computer_board.check_game_over():
-            print("\nComputer's board:")
-            computer_board.print_board()
-            game_stats.game_end_stats(player_won=True)
-            game_stats.display_stats()
-            return "Player"
-
-        print("\n------------- Player's turn has ended -------------\n")
-
-        # Computers turn
-        print("Computer is thinking...")
-        time.sleep(2)
-        comp_row, comp_col = player_board.computer_guess()
-        result = player_board.mark_guess(comp_row, comp_col)
-        print(f"Computer {'Hit' if result == 'hit' else 'Missed'} at "
-              f"{chr(97 + comp_col)}{comp_row + 1}!!.")
-
-        if player_board.check_game_over():
-            print("\nYour board:")
+        while not player_board.check_game_over() \
+                and not computer_board.check_game_over():
+            print("\n" + player_board_name + ":\n")
             player_board.print_board(show_ships=True)
-            game_stats.display_stats()
-            return "Computer"
+            print("\nComputer's board:\n")
+            computer_board.print_board()
 
-        print("\n--------------- Computers turn has ended ---------------\n")
+            # Players turn
+            while True:
+                guess_row, guess_col = player_board.player_guess()
+                if computer_board.valid_guess(guess_row, guess_col):
+                    result = computer_board.mark_guess(guess_row, guess_col)
+                    game_stats.shot_stats(result)
+                    print(f"You {'Hit' if result == 'hit' else 'Missed'} at "
+                          f"{chr(97 + guess_col)}{guess_row + 1}!!.")
+                    break
+                else:
+                    print("You've already guessed that spot.")
 
-        action = play_or_quit()
-        if action == 'quit':
-            return
+            if computer_board.check_game_over():
+                print("\nComputer's board:")
+                computer_board.print_board(show_ships=True)
+                game_stats.game_end_stats(player_won=True)
+                game_stats.display_stats()
+                print("Congratulations! You have won the game!")
+                break
+
+            print("\n------------- Player's turn has ended -------------\n")
+
+            # Computers turn
+            print("Computer is thinking...")
+            time.sleep(2)
+            comp_row, comp_col = computer_board.computer_guess()
+            result = player_board.mark_guess(comp_row, comp_col)
+            game_stats.shot_stats(result)
+            print(f"Computer {'Hit' if result == 'hit' else 'Missed'} at "
+                  f"{chr(97 + comp_col)}{comp_row + 1}!!.")
+
+            if player_board.check_game_over():
+                print("\nYour board:")
+                player_board.print_board(show_ships=True)
+                game_stats.game_end_stats(player_won=False)
+                game_stats.display_stats()
+                print("Sorry, you have lost the game. The computer has won.")
+                break
+
+            print("\n------------- Computers turn has ended -------------\n")
+
+            if play_or_quit() == 'quit':
+                return
+
+        play_again = input(
+            "Do you want to play again? (yes/no):\n"
+        ).strip().lower()
+        if play_again != "yes":
+            print("\nThank you for playing Battleships!")
+            break
 
 
 def game_intro():
-    while True:
-        """
-        Displays the introduction to the game using ASCII art and gives the
-        user the option of viewing a tutorial or playing the game and handles
-        the replay game loop.
-        """
-        print(r"""
+    """
+    Displays the introduction to the game using ASCII art and gives the
+    user the option of viewing a tutorial or playing the game and handles
+    the replay game loop.
+    """
+    print(r"""
  ____        _   _   __             _
 (  _ \      ( )_( )_(_ )           ( )    _
 | (_) )  _ _|  _)  _)| |   __   ___| |__ (_)_ _    ___
@@ -289,12 +300,13 @@ def game_intro():
 (____/ \__ _)\__)\__)___)\____)____/_) (_)_)  __/(____/
                                            | |
                                            (_)
-        """)
-        print(r"""
+    """)
+    print(r"""
  ====================================================
 *               WELCOME TO BATTLESHIPS!!             *
 *====================================================*
-        """)
+    """)
+    while True:
         choice = input(
             "Press (T) for the Tutorial or (P) to Play The Game:\n"
         ).strip().upper()
@@ -302,21 +314,11 @@ def game_intro():
         if choice == 'T':
             display_tutorial()
         elif choice == 'P':
-            winner = run_game()
-            if winner == "Player":
-                print("Congratulations! You have won the game!")
-            elif winner == "Computer":
-                print("Sorry, you have lost the game. The computer has won.")
-
-            play_again = input(
-                "Do you want to play again? (yes/no):\n"
-            ).strip().lower()
-            if play_again != "yes":
-                print("Thank you for playing Battleships!")
-                break
+            run_game()
+            break
         else:
-            print("Invalid input. Please press 'T' for tutorial or 'P' to "
-                  " play.")
+            print("Invalid input. Please press 'T' for tutorial or "
+                  f"'P' to play.")
 
 
 if __name__ == "__main__":
