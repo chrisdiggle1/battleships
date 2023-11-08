@@ -23,7 +23,7 @@ class Board:
         """
         Prints the board with column headers as letters using the chr()
         function to convert numbers to ASCII characters. Numbers are used
-        down the side.
+        down the side. Computers ships are hidden.
         """
         print("\n   " + " ".join(chr(97 + i) for i in range(self.size)))
         for r in range(self.size):
@@ -122,6 +122,10 @@ class GameStats:
         self.misses = 0
 
     def shot_stats(self, result):
+        """
+        Updates the statistics for shots taken, hits, and misses
+        based on the result of a guess.
+        """
         self.shots_taken += 1
         if result == 'hit':
             self.hits += 1
@@ -129,6 +133,10 @@ class GameStats:
             self.misses += 1
 
     def game_end_stats(self, player_won):
+        """
+        Updates the game statistics at the end of a game, incrementing
+        the count of games playedand recording a win or loss.
+        """
         self.games_played += 1
         if player_won:
             self.wins += 1
@@ -136,6 +144,11 @@ class GameStats:
             self.losses += 1
 
     def display_stats(self):
+        """
+        Prints out the current game statistics including games played,
+        wins, losses, total shots taken, hits, misses, and the hit/miss
+        ratio.
+        """
         hit_miss_ratio = self.hits / max(self.shots_taken, 1)
         print(f"\nGame Statistics:")
         print(f"Games Played: {self.games_played}")
@@ -149,7 +162,9 @@ class GameStats:
 
 def display_tutorial():
     """
-    Displays the game tutorial with instructions on how to play.
+    Displays the game tutorial with instructions on how to play
+    Battleships, including how to guess coordinates and how hits
+    and misses are marked.
     """
     print(r"""
 * ====================================================================*
@@ -182,8 +197,8 @@ def display_tutorial():
 
 def get_name():
     """
-    Prompts the user to enter a name to play game and names their
-    board with their name. The game will terminate if the user
+    Prompts the user to enter a name to play game and personalise
+    their board with their name. The game will terminate if the user
     enters 'exit'.
     """
     while True:
@@ -203,7 +218,7 @@ def get_name():
 def play_or_quit():
     """
     Gives the user to option to quit the game or carry on after each turn.
-    If the player enters 'quit' they will be taken back to the intro screen.
+    If the player enters 'quit' the current game will end.
     """
     quit_game = input("\nPress Enter to continue or type 'quit' to return to "
                       f"the intro screen: ").lower().strip()
@@ -216,7 +231,9 @@ def play_or_quit():
 def run_game():
     """
     Controls the main flow of the game between the player and computer
-    taking turns and returns the winner of the game.
+    taking turns until all of one players ships have been hit. After the
+    game ends, the player is asked if they want to play again, and the
+    game can be restarted or ended based on their response.
     """
     name = get_name()
     player_board_name = f"{name}'s board"
@@ -287,9 +304,8 @@ def run_game():
 
 def game_intro():
     """
-    Displays the introduction to the game using ASCII art and gives the
-    user the option of viewing a tutorial or playing the game and handles
-    the replay game loop.
+    Displays the introduction to the game with options to view the tutorial
+    or start playing the game. Handles the initial interaction with the user
     """
     print(r"""
  ____        _   _   __             _
