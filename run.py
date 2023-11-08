@@ -69,7 +69,7 @@ class Board:
         the error if the number or letter is not valid or the guess
         is outside of the board size. The column input allows both
         'A' and 'a' inputs. The ord() function is used to get the
-        ASCII code of the characters and covert to integers.
+        ASCII code of the characters and convert to integers.
         """
         while True:
             col_input = input("\nGuess a column 'a-f':\n").lower()
@@ -115,7 +115,7 @@ class Board:
 
     def computer_guess(self):
         """
-        Random guess generated for the computers turn
+        Random guess generated for the computers turn.
         """
         while True:
             row = random.randint(0, self.size - 1)
@@ -198,15 +198,18 @@ def display_tutorial():
 * where only the most astute commanders will prevail. Set your sights *
 * on victory, captain, for the battle is about to begin!              *
 *=====================================================================*
-*
+* You will first be prompted to enter a name which will personalise   *
+*  your board, and then you will be asked to select number of ships   *
+*  between 2 and 10 that you would like to play, with which will be   *
+*  randomly placed on the board for you for each new game.            *
 * The game coordinates range from letters 'a' to 'f' along the top    *
 * and '1' to '6' down the side. You will be prompted to pick a letter *
-* first and then a letter after that. If you hit the computers ship,  *
-* you will see a message stating where you hit and the computers      *
+* first and then a number. If you hit the computers ship, you         *
+* will see a message stating where you hit, and the computers board   *
 * will be marked with a '*'. Misses will be marked with 'X' and the   *
 * players ships will be marked on their board with an 'S' which will  *
 * turn to '*' if hit. all the '.' represents the water. The game will *
-* end when one player has sunk all 5 of the other players ships.      *
+* end when one player has sunk all of the other players ships.        *
 *                 Good Luck and Enjoy the Game!!                      *
 *=====================================================================*
         """)
@@ -341,7 +344,7 @@ def game_intro():
                                            (_)
     """)
     print(r"""
- ====================================================
+*====================================================*
 *               WELCOME TO BATTLESHIPS!!             *
 *====================================================*
     """)
