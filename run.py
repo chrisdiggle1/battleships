@@ -12,6 +12,7 @@ class Board:
         self.num_ships = num_ships
         self.grid = [["." for _ in range(size)] for _ in range(size)]
         self.place_ships()
+        self.computer_guesses = set()
 
     def reinitialise_board(self):
         """
@@ -100,9 +101,10 @@ class Board:
         Random guess generated for the computers turn
         """
         while True:
-            col = random.randint(0, self.size - 1)
             row = random.randint(0, self.size - 1)
-            if self.grid[row][col] in [".", "S"]:
+            col = random.randint(0, self.size - 1)
+            if (row, col) not in self.computer_guesses:
+                self.computer_guesses.add((row, col))
                 return (row, col)
 
     def check_game_over(self):
