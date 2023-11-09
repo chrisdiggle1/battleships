@@ -1,6 +1,8 @@
 import random
 import time
-from colorama import Fore
+from colorama import init, Fore, Style
+
+init(autoreset=True)
 
 
 class Board:
@@ -48,9 +50,11 @@ class Board:
                     self.place_ships()
                     break
                 else:
-                    print("Please enter a number between 2 and 10.")
+                    print(Fore.RED + "Please enter a number between 2 and 10."
+                          + Style.RESET_ALL)
             except ValueError:
-                print("Invalid input. Please enter a whole number.")
+                print(Fore.RED + "Invalid input - Please enter a whole "
+                      f"number between 2 and 10." + Style.RESET_ALL)
 
     def place_ships(self):
         """
@@ -78,8 +82,9 @@ class Board:
                 col = ord(col_input) - ord('a')
                 break
             else:
-                print(f"Invalid Input - Please enter a single letter "
-                      f"between 'a' and '{chr(96 + self.size)}'.")
+                print(Fore.RED + "Invalid Input - Please enter a single "
+                      f" letter between 'a' and '{chr(96 + self.size)}'."
+                      + Style.RESET_ALL)
 
         while True:
             row_input = input("Guess a row '1-6':\n").strip()
@@ -88,10 +93,11 @@ class Board:
                 if 0 <= row < self.size:
                     break
                 else:
-                    print(f"Invalid Input - Please enter a number between "
-                          f" '1' and '{self.size}'.")
+                    print(Fore.RED + "Invalid Input - Please enter a number "
+                          f" between '1' and '{self.size}'." + Style.RESET_ALL)
             else:
-                print("Invalid Input - Please enter a single digit.")
+                print(Fore.RED + "Invalid Input - Please enter a single digit."
+                      f" between '1' and '{self.size}'." + Style.RESET_ALL)
 
         return row, col
 
@@ -186,7 +192,7 @@ def display_tutorial():
     Battleships, including how to guess coordinates and how hits
     and misses are marked.
     """
-    print(r"""
+    print(Fore.CYAN + r"""
 * ====================================================================*
 *                                                                     *
 *                           Battleships                               *
@@ -213,7 +219,7 @@ def display_tutorial():
 * end when one player has sunk all of the other players ships.        *
 *                 Good Luck and Enjoy the Game!!                      *
 *=====================================================================*
-        """)
+        """ + Style.RESET_ALL)
     input("Press Enter to start the game...\n")
     run_game()
 
@@ -334,7 +340,7 @@ def game_intro():
     Displays the introduction to the game with options to view the tutorial
     or start playing the game. Handles the initial interaction with the user
     """
-    print(r"""
+    print(Fore.CYAN + r"""
  ____        _   _   __             _
 (  _ \      ( )_( )_(_ )           ( )    _
 | (_) )  _ _|  _)  _)| |   __   ___| |__ (_)_ _    ___
@@ -343,12 +349,12 @@ def game_intro():
 (____/ \__ _)\__)\__)___)\____)____/_) (_)_)  __/(____/
                                            | |
                                            (_)
-    """)
-    print(r"""
+    """ + Style.RESET_ALL)
+    print(Fore.CYAN + r"""
 *====================================================*
 *               WELCOME TO BATTLESHIPS!!             *
 *====================================================*
-    """)
+    """ + Style.RESET_ALL)
     while True:
         choice = input(
             "Press (T) for the Tutorial or (P) to Play The Game:\n"
@@ -360,8 +366,8 @@ def game_intro():
             run_game()
             break
         else:
-            print("Invalid input. Please press 'T' for tutorial or "
-                  f"'P' to play.")
+            print(Fore.RED + "Invalid input. Please press 'T' for tutorial or "
+                  f"'P' to play." + Style.RESET_ALL)
 
 
 if __name__ == "__main__":
