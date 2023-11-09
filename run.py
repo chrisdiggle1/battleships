@@ -114,10 +114,10 @@ class Board:
         '*' marks a hit and 'X' marks a miss"
         """
         if self.grid[row][col] == "S":
-            self.grid[row][col] = "*"
+            self.grid[row][col] = Fore.RED + "*" + Style.RESET_ALL
             return "hit"
         else:
-            self.grid[row][col] = "X"
+            self.grid[row][col] = Fore.GREEN + "X" + Style.RESET_ALL
             return "miss"
 
     def computer_guess(self):
