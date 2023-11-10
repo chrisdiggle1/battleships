@@ -38,3 +38,30 @@ The game has been created for my third Code Institute portfolio project and is a
     - [Credits](#credits)
         - [Code](#code)
         - [Acknowledgements](#acknowledgements)
+
+## **User Experience UX**
+
+### **Site Purpose**
+
+This game has been built for my third portfolio project with the Code Institute. The purpose of the site is let users play the old classic game Battleships against a randomised computer output.
+
+### **Target Audience**
+
+The target audience for this site is for fans of the Battleship game and anybody else who just wants have a bit of fun to pass some time.
+
+### **User Goals**
+
+As A user playing the game:
+
+- I want to play and enjoy the classic Battleships game.
+- I want to have a tutorial on how the game works.
+- I want to be able to see my hits and missies on a board.
+- I want to be able to keep record of thw wins and losses.
+- I would like to choose how many ships I can place on the board.
+- I want a fair game against the computer.
+
+### **Future Implementations**
+
+My future plans for the game are to allow the user to choose their board size and place their own ships.
+
+
