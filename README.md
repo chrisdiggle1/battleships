@@ -64,4 +64,13 @@ As A user playing the game:
 
 My future plans for the game are to allow the user to choose their board size and place their own ships.
 
+## **Design**
 
+### **Structure**
+
+The Flowchart drafts out how the program will work and shows the logic of the flow of the game.
+
+<details>
+<summary>Flowchart</summary>
+<img src="assets/readme_images/structure-flowchart.png">
+</details>
