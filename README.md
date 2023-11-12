@@ -255,6 +255,7 @@ At the end of each turn, the user will need to press 'enter'' to continue with t
 <img src="assets/readme_images/quit-game.png">
 </details
 
+
 ## **Technologies Used**
 
 ### **Languages**
@@ -283,4 +284,31 @@ The code has been run through the Code Institute Python Linter and passed with n
 </details
 
 ### **Feature Testing**
+
+| Test                     | Expected               | Result
+| ---| ---| ---|
+| Type "python3 run.py intop the terminal | The page should load in the terminal with no errors. | Pass |
+| Press 'T' to view the tutorial or 'P' to play the game. | Pressing 'T' displays the tutorial and 'P' starts the game. Anything other than 'T' or 'P' displays an invalid input error message.| Pass|
+| Enter name to start the game. | The user will then be asked to enter how many ships they would like to play with. | Pass |
+| Type 'exit' on the enter name or exit to quit prompt. |The game exits with a goodbye message to the player. | Pass |
+| Enter nothing on the on the enter name or exit to quit prompt. | A prompt appears telling the user no name was entered. | Pass |
+| Enter number of ships on the board from 2-10. The users enters a number outside of this range - 22. | Message appears telling the user enter a number between 2 and 10. | Pass |
+| Enter number of ships on the board from 2-10. The users enters a word - cat. | Invalid Input error message appears stating to enter a whole number between 2 and 10. | Pass |
+| Enter a valid name and number of ships to play with. | The game loads displaying the players board with the ships randomly placed marked as 'S' and the computers board with ships hidden. | Pass |
+| User is asked to guess a column 'a' - 'f'. User enters 'e' | The player will then be asked to guess a row. | Pass |
+| User is asked to guess a column 'a' - 'f'. User enters 'z'. | Invalid Input error appears. | Pass |
+| User is asked to guess a column 'a' - 'f'. User enters a number - 5. | Invalid Input error appears. | Pass |
+| User is asked to guess a row from numbers '1'-'6'. User enters '2'. | Screen shows whether the player hit or missed and the co-ordinates entered and then automatically the computer will take its turn and display whether it hit or missed. | Pass |
+| User is asked to guess a row from numbers '1'-'6'. User enters '9'. | Invalid input message appears. | Pass |
+User is asked to guess a row from numbers '1'-'6'. User enters a word - dog. | Invalid input message appears. | Pass |
+| Both players make valid guesses. | After the player and computer have taken a turn, the player will be asked to press enter to continue or type quit to return to the intro screen. | Pass |
+| Press enter to continue. | The screen then displays both the player and computers boards with the updated marks and asks for guesses again. | Pass |
+| User types 'quit' to return to the intro screen. | game returns to the intro screen. | Pass |
+| User guesses the same spot twice. | message appears telling the user they have already guessed that spot. | Pass |
+| End of a game when all of a players have been sunk. | A message appears telling the player if they have won or lost. | Pass |
+| End of a game when all of a players have been sunk. | Displays the game statisctics which increments over each new game. | Pass |
+End of a game when all of a players have been sunk. | A message is displayed asking if the user wants to play again. | Pass |
+| User enters 'yes' to play again. | The user will then be asked to enter the ships to play with and then a new game will start with fresh boards and ships randomized again. | pass |
+| User enters anything other than 'yes' or 'no' on the play again prompt. e.g 99, cat. | Invalid input message appears. | Pass |
+User enters 'no' to play again. | The game ends with a message stating thanks for playing. | Pass |
 
