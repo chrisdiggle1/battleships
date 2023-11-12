@@ -327,12 +327,18 @@ def run_game():
 
         game_stats.display_stats()
 
-        play_again = input(
-            "Do you want to play again? (yes/no):\n"
-        ).strip().lower()
-        if play_again != "yes":
-            print("\nThank you for playing Battleships!")
-            break
+        while True:
+            play_again = input(
+                "Do you want to play again? (yes/no):\n"
+            ).strip().lower()
+            if play_again == "yes":
+                break
+            elif play_again == "no":
+                print("\nThank you for playing Battleships!\n")
+                return
+            else:
+                print(Fore.RED + "Invalid input - Please enter 'yes' or "
+                      f"'no'." + Style.RESET_ALL)
 
 
 def game_intro():
