@@ -255,3 +255,19 @@ At the end of each turn, the user will need to press 'enter'' to continue with t
 <img src="assets/readme_images/quit-game.png">
 </details
 
+## **Technologies Used**
+
+### **Languages**
+
+Python 3 was the only coding language used in this project.
+
+### **Frameworks and tools**
+
+- [Git](https://git-scm.com/) - For version control.
+- [Github](https://github.com/) - To save and store the files for the site.
+- [CodeAnywhere](https://app.codeanywhere.com/) - The cloud IDE used to write all my code.
+- [Heroku](https://id.heroku.com/login) - Used to deply the project.
+- [Text Editor](https://texteditor.com/multiline-text-art/) - Used to create the ASCII are for the project.
+- [Lucid Chart](https://www.lucidchart.com/pages/) - Used to create the flowchart showing the logic of the game.
+
+
