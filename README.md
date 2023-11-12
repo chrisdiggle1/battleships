@@ -216,3 +216,42 @@ If the user tries to guess a mark, which has already been guessed before, a prom
 <img src="assets/readme_images/already-guessed.png">
 </details>
 
+### **Play Again**
+
+At the end of a game, once all the oponents ships have been sunk, the user will be asked if they would like to play again. The user will need to input 'yes' or 'no' at this point. If the user enters 'yes', they will then be asked to slect how many ships to play with again and then the game will start again with fresh boards and ships in random places again. If the user enters 'no' this display a thank you for playing and will terminate the game. If the user enters anything other than 'yes' or 'no', they will see an invalid input statement.
+
+<details>
+<summary>Play Again? Yes</summary>
+<img src="assets/readme_images/play-again-yes.png">
+</details>
+
+<br>
+
+<details>
+<summary>Play Again? No</summary>
+<img src="assets/readme_images/play-again-no.png">
+</details
+
+<br>
+
+<details>
+<summary>Play Again? Invalid Input</summary>
+<img src="assets/readme_images/invalid-play-again.png">
+</details
+
+### **Quit Game**
+
+The play has the chance to imediately exit the game from the intro screen if they decide they don't want to play. The user will need to enter 'exit' to do this where they will then see a goodbye message and the game will terminate.
+
+<details>
+<summary>'Exit' to Quit</summary>
+<img src="assets/readme_images/exit-to-quit.png">
+</details
+
+At the end of each turn, the user will need to press 'enter'' to continue with the game or the user has the chance to quit the game and return to the into screen by entering 'quit'.
+
+<details>
+<summary>Quit Game</summary>
+<img src="assets/readme_images/quit-game.png">
+</details
+
