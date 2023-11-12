@@ -143,7 +143,7 @@ Once the players turn has ended, the computer will automatically make its guess.
 
 ### **Game Statistics**
 
-Once either the player or the computer has sank all of the opponents ships, the program will then display some statistics signalling the end of the game. The statsitics increment each time a game and show the below stats - 
+Once either the player or the computer has sank all of the opponents ships, the program will then display some statistics and a statement telling the player if they won or lost signalling the end of the game. The statsitics increment each time a game and show the below stats - 
 
 * Games Played
 * Wins
@@ -156,6 +156,20 @@ Once either the player or the computer has sank all of the opponents ships, the 
 <details>
 <summary>Game Statistics</summary>
 <img src="assets/readme_images/game-stats.png">
+</details>
+
+<br>
+
+<details>
+<summary>Plyer Win Message</summary>
+<img src="assets/readme_images/player-win.png">
+</details>
+
+<br>
+
+<details>
+<summary>Player Lost Message</summary>
+<img src="assets/readme_images/player-lost.png">
 </details>
 
 ### **Input Validation**
@@ -173,3 +187,32 @@ When the user is asked to enter their name to start, if nothing is entered, the 
 <summary>No Name Entered</summary>
 <img src="assets/readme_images/no-name.png">
 </details>
+
+When the user is asked to enter the number of ships they would like to place on the board, there are 2 errors in place to handle not selecting a number between '2' and '10' and also if they entered a word and not a number.
+
+<details>
+<summary>Invalid Ship Input</summary>
+<img src="assets/readme_images/invalid-ships.png">
+</details>
+
+Validation input errors have been set up to handle the players column and row guesses. If the user doesnt enter a letter between 'a' and 'f'  when asked to guess a column, an invalid input error will appear in red stating their input isnt valid.
+
+<details>
+<summary>Invalid Column Input</summary>
+<img src="assets/readme_images/invalid-column.png">
+</details>
+
+If the user enters a word instead of a number for their row guess, they will receive an error telling them to enter a single digit between '1' and '6' and if they enter a number outside the boundries of the board, they will reveive an error prompting them to enter a row between '1' and '6'.
+
+<details>
+<summary>Invalid Row Input</summary>
+<img src="assets/readme_images/invalid-row.png">
+</details>
+
+If the user tries to guess a mark, which has already been guessed before, a prompt willappear telling the user that they have already guessed that spot. They will then be required to take abother guess.
+
+<details>
+<summary>Aleady Guessed Co-ordinate</summary>
+<img src="assets/readme_images/already-guessed.png">
+</details>
+
