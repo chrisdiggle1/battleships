@@ -267,7 +267,20 @@ Python 3 was the only coding language used in this project.
 - [Github](https://github.com/) - To save and store the files for the site.
 - [CodeAnywhere](https://app.codeanywhere.com/) - The cloud IDE used to write all my code.
 - [Heroku](https://id.heroku.com/login) - Used to deply the project.
-- [Text Editor](https://texteditor.com/multiline-text-art/) - Used to create the ASCII are for the project.
+- [Text Editor](https://texteditor.com/multiline-text-art/) - Used to create the ASCII art for the project.
 - [Lucid Chart](https://www.lucidchart.com/pages/) - Used to create the flowchart showing the logic of the game.
 
+
+## **Testing and Validation**
+
+### **Code Institute Python Linter**
+
+The code has been run through the Code Institute Python Linter and passed with no errors
+
+<details>
+<summary>Python Linter</summary>
+<img src="assets/readme_images/python-linter.png">
+</details
+
+### **Feature Testing**
 
