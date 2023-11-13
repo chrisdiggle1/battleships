@@ -44,7 +44,7 @@ class Board:
         while True:
             try:
                 num_ships = int(input("Enter the number of ships to place on "
-                                f"the board (2-10): "))
+                                f"the board (2-10): \n"))
                 if 2 <= num_ships <= 10:
                     self.num_ships = num_ships
                     self.place_ships()
@@ -250,7 +250,7 @@ def play_or_quit():
     If the player enters 'quit' the current game will end.
     """
     quit_game = input("\nPress Enter to continue or type 'quit' to return to "
-                      f"the intro screen: ").lower().strip()
+                      f"the intro screen: \n").lower().strip()
     if quit_game == 'quit':
         game_intro()
     else:
