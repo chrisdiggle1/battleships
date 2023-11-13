@@ -323,5 +323,48 @@ User enters 'no' to play again. | The game ends with a message stating thanks fo
 | When the computers turn had ended, the intented print statement was not printing to the terminal. | The print statement was outside of the 'while True' loop in the run_game funcion. Corrected the indentation. | 
 | While writing the readme and playing the game for final testing, I noticed if the user accidentally pressed a key the game would just end as the code was set to 'if play_again != "yes":' so anything other than 'yes' input would end the game. | I added a new loop in the run_game function which will only accept'yes' or 'no' inputs from the player. If anything else is input then an invalid input error will be displayed. |
 
+## **Deployment**
 
+For this project, Heroku was was used to deploy this site due to this being a backend programme. The Code Institute template used for this project allows the programme to be run in a mock terminal through a web browser.
+
+The following steps were taken to deploy the site using Heroku:
+
+* Create a Heroku account.
+* Click the 'create new app' button on heroku.
+* Create a name for your app. This needs to be unique.
+* Select the region you are based.
+* Select 'create app'.
+* Click on the 'settings' tab.
+* The following setting are used:
+  * Config vars: KEY = PORT, VALUE = 8000.
+* Select 'add buildpack'.
+ * The following build packs are used (in this order with Python on top):
+   * Python
+    * Node JS
+* Select the 'deploy tab'.
+* Select the deployment method (github was used for this project).
+* Search for your repository name.
+* Click 'connect'.
+* Choose whether to use manual deployment or automatic deployment and make sure that 'main branch' is selected.
+* If the deployment is successful, you will see a message saying 'your app was successfully deployed'. You will then see a 'view' button which if you click to take you to your deployed application.
+
+### **Local Development**
+
+### **Fork**
+
+To Fork the repository, please follow the below steps - 
+
+1. Login to GitHub.
+2. Select the repository for the project you wish to fork.
+3. Click the fork botton in the top right-hand corner.
+
+### **Clone**
+
+To clone the repository, please follow thw below steps - 
+
+1. Login to GitHub.
+2. Select the repository for the project you wish to clone.
+3. Click on the code button and choose whether you would like to clone with HTTPS, SSH or GitHub CLI and copy the link shown.
+4. Open a new terminal in the IDE used and change the current working directory to the location you want to use for the cloned directory.
+5. Type 'git clone' into the terminal and then paste the link you copied in step 3 then press enter.
 
