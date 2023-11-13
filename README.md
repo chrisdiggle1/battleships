@@ -368,3 +368,27 @@ To clone the repository, please follow thw below steps -
 4. Open a new terminal in the IDE used and change the current working directory to the location you want to use for the cloned directory.
 5. Type 'git clone' into the terminal and then paste the link you copied in step 3 then press enter.
 
+## **Credits**
+
+### **Code**
+
+The inspiration for the game was taken from the scope video on the Code Institute LMS.
+
+The use of the chr() and ord() functions to convert Integer to a Character and Character to an Integer was used using the below website:
+- https://www.askpython.com/python/built-in-methods/python-chr-and-ord-methods
+
+The below youtube videos were watched for ideas on how to code the game but the content of the game was written by myself:
+- https://www.youtube.com/watch?v=tF1WRCrd_HQ
+- https://www.youtube.com/watch?v=u3yo-TjeIDg
+
+### **Acknowledgements**
+
+I would like to thank the below during my time doing this project -
+
+- My Wife and Kids for their always continued support and repeatedly playing the game to see if they can find anything wrong.
+
+- The Slack community for when you need help, a laugh or to help somebody else out.
+
+- Code Institute Love Sandwiches project which prepared me for this project.
+
+- Using my codewithmosh subscription and going through the Complete Python Mastery course, and my Python Programming by Kit jackson book for extra learning on Python.
