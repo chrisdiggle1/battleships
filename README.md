@@ -312,3 +312,16 @@ End of a game when all of a players have been sunk. | A message is displayed ask
 | User enters anything other than 'yes' or 'no' on the play again prompt. e.g 99, cat. | Invalid input message appears. | Pass |
 User enters 'no' to play again. | The game ends with a message stating thanks for playing. | Pass |
 
+## **Bugs**
+
+### **Resolved Bugs**
+
+| Problem                    | Fix            
+| ---| ---|
+| If the player input the same coordinates twice, the game wouldnt let them take another guess and would just carry on the computers turn. | Added 'while True loops to the player and computers turns. This is to enure that both players can only proceed after making a valid guess. |
+| If the user accidentally pressed 2 or more keys simultaneously, it caused the game to error and stop completely. | Update the input validation to check for a single character input for columns and ensure that the input for rows is a single digit that falls within the valid range. |
+| When the computers turn had ended, the intented print statement was not printing to the terminal. | The print statement was outside of the 'while True' loop in the run_game funcion. Corrected the indentation. | 
+| While writing the readme and playing the game for final testing, I noticed if the user accidentally pressed a key the game would just end as the code was set to 'if play_again != "yes":' so anything other than 'yes' input would end the game. | I added a new loop in the run_game function which will only accept'yes' or 'no' inputs from the player. If anything else is input then an invalid input error will be displayed. |
+
+
+
