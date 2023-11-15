@@ -1,6 +1,6 @@
 # Battleships
 
-I have built this game to mimic the old classic game 'Battleships'. the game has been designed to allow the player to interact though the termianl and play against the computer. The game generates a 6x6 playing board for the player and cpmputer and randomizes the ship positions each game. The player will then guess a row and column each round which is followed by the computers guess. The game continues until either the player or computer sinks the opponents ships. The Player also has the option to quit the game after each turn. 
+I have built this game to mimic the old classic game 'Battleships'. the game has been designed to allow the player to interact though the termianl and play against the computer. The game generates a 6x6 playing board for the player and cpmputer and randomizes the ship positions each game. The player will then guess a row and column each round which is followed by the computers guess. The game continues until either the player or computer sinks the opponents ships. The Player also has the option to quit the game after each turn. The end of the each game will display a statistics board which increments over multiple games.
 
 The game has been created for my third Code Institute portfolio project and is a Python based program. The Battleships site is live and can be found by clicking [here](https://battleships-cd-aee01aae76c3.herokuapp.com/)
 
@@ -116,7 +116,7 @@ Once the user has entered their name and the amount of ships they would like to 
 <img src="assets/readme_images/new-start.png">
 </details>
 
-As the game goes on and the player and computer are taking guesses, each guess will marked on the board as either a hit or miss. A hit will be mraked as a red * and misses will be marked with a green X.
+As the game goes on and the player and computer are taking guesses, each guess will marked on the board as either a hit or miss. A hit will be mraked as a red '*' and misses will be marked with a green 'X'.
 
 <details>
 <summary>In Game Boards</summary>
@@ -125,7 +125,7 @@ As the game goes on and the player and computer are taking guesses, each guess w
 
 ### **Player Guess**
 
-For the player to take a guess, they will be first asked to guess a column, which will be from the letters a-f followed by a prompt to guess a row from numbers 1-6. After the player has made their guesses, they will be told immediately if they hit or miss the computers ship and a print statement will display stating the end of the players turn.
+For the player to take a guess, they will be first asked to guess a column, which will be from the letters 'a-f' followed by a prompt to guess a row from numbers '1-6'. After the player has made their guesses, they will be told immediately if they hit or miss the computers ship and a print statement will display stating the end of the players turn.
 
 <details>
 <summary>Player Guess</summary>
@@ -181,7 +181,7 @@ The game handles invalid player inputs throughout the game, starting from the in
 <img src="assets/readme_images/invalid-intro.png">
 </details>
 
-When the user is asked to enter their name to start, if nothing is entered, the player will see a prompt stating that no name was entered and they needto enter a name to continue.
+When the user is asked to enter their name to start, if nothing is entered, the player will see a prompt stating that no name was entered and they need to enter a name to continue.
 
 <details>
 <summary>No Name Entered</summary>
@@ -209,7 +209,7 @@ If the user enters a word instead of a number for their row guess, they will rec
 <img src="assets/readme_images/invalid-row.png">
 </details>
 
-If the user tries to guess a mark, which has already been guessed before, a prompt willappear telling the user that they have already guessed that spot. They will then be required to take abother guess.
+If the user tries to guess a mark, which has already been guessed before, a prompt will appear telling the user that they have already guessed that spot. They will then be required to take abother guess.
 
 <details>
 <summary>Aleady Guessed Co-ordinate</summary>
@@ -251,8 +251,8 @@ The play has the chance to imediately exit the game from the intro screen if the
 At the end of each turn, the user will need to press 'enter'' to continue with the game or the user has the chance to quit the game and return to the into screen by entering 'quit'.
 
 <details>
-<summary>Quit Game</summary>
-<img src="assets/readme_images/quit-game.png">
+<summary>Continue or Quit</summary>
+<img src="assets/readme_images/continue-or-quit.png">
 </details
 
 
@@ -287,7 +287,7 @@ The code has been run through the Code Institute Python Linter and passed with n
 
 | Test                     | Expected               | Result
 | ---| ---| ---|
-| Type "python3 run.py intop the terminal | The page should load in the terminal with no errors. | Pass |
+| Type "python3 run.py into the terminal | The page should load in the terminal with no errors. | Pass |
 | Press 'T' to view the tutorial or 'P' to play the game. | Pressing 'T' displays the tutorial and 'P' starts the game. Anything other than 'T' or 'P' displays an invalid input error message.| Pass|
 | Enter name to start the game. | The user will then be asked to enter how many ships they would like to play with. | Pass |
 | Type 'exit' on the enter name or exit to quit prompt. |The game exits with a goodbye message to the player. | Pass |
@@ -388,6 +388,8 @@ I would like to thank the below during my time doing this project -
 - My Wife and Kids for their always continued support and repeatedly playing the game to see if they can find anything wrong.
 
 - The Slack community for when you need help, a laugh or to help somebody else out.
+
+- Stackoverflow and W3Schools for hints and tips with code issues.
 
 - Code Institute Love Sandwiches project which prepared me for this project.
 
